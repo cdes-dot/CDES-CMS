@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_shared_enlaces",
+  "info": {
+    "displayName": "Enlace"
+  },
+  "options": {},
+  "attributes": {
+    "Contenido": {
+      "type": "string"
+    },
+    "Url": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

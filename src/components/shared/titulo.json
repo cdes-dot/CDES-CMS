@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_shared_titulos",
+  "info": {
+    "displayName": "Titulo"
+  },
+  "options": {},
+  "attributes": {
+    "Contenido": {
+      "type": "string"
+    },
+    "Subtitulo": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

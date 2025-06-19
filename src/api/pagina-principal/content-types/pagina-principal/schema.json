@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "pagina_principals",
+  "info": {
+    "singularName": "pagina-principal",
+    "pluralName": "pagina-principals",
+    "displayName": "Pagina Principal"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Hero": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.titulo",
+        "shared.fondo"
+      ]
+    },
+    "Navegacion": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.enlace"
+      ]
+    }
+  }
+}
