@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_evento_historiacos",
+  "info": {
+    "displayName": "Evento Historico"
+  },
+  "options": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string"
+    },
+    "Descripcion": {
+      "type": "text"
+    },
+    "Fecha": {
+      "type": "date"
+    }
+  },
+  "config": {}
+}

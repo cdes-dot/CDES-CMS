@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_shared_eventos",
+  "info": {
+    "displayName": "Evento"
+  },
+  "options": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string"
+    },
+    "Descripcion": {
+      "type": "text"
+    },
+    "Fecha": {
+      "type": "date"
+    },
+    "Url": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

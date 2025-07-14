@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_contactos",
+  "info": {
+    "displayName": "Contacto"
+  },
+  "options": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "email"
+    },
+    "Telefono": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

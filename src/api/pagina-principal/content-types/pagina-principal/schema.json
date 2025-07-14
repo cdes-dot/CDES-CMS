@@ -11,18 +11,26 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Hero": {
+    "Carrousel": {
       "type": "dynamiczone",
       "components": [
-        "shared.titulo",
-        "shared.fondo"
+        "shared.titulo"
       ]
     },
-    "Navegacion": {
-      "type": "dynamiczone",
-      "components": [
-        "shared.enlace"
-      ]
+    "Destacados": {
+      "type": "component",
+      "component": "shared.encabezado",
+      "repeatable": false
+    },
+    "Plan": {
+      "type": "component",
+      "component": "shared.plan-estrategico",
+      "repeatable": false
+    },
+    "Videos": {
+      "type": "component",
+      "component": "shared.seccion-de-videos",
+      "repeatable": false
     }
   }
 }

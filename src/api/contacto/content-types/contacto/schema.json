@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "contactos",
+  "info": {
+    "singularName": "contacto",
+    "pluralName": "contactos",
+    "displayName": "Contacto"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titulo": {
+      "type": "component",
+      "component": "shared.encabezado",
+      "repeatable": false
+    },
+    "Contactos": {
+      "type": "component",
+      "component": "shared.contacto",
+      "repeatable": true
+    }
+  }
+}

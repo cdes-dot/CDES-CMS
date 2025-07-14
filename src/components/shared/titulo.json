@@ -1,7 +1,7 @@
 {
   "collectionName": "components_shared_titulos",
   "info": {
-    "displayName": "Titulo"
+    "displayName": "Diapositiva"
   },
   "options": {},
   "attributes": {
@@ -9,7 +9,22 @@
       "type": "string"
     },
     "Subtitulo": {
-      "type": "string"
+      "type": "text"
+    },
+    "Fondo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Enlace": {
+      "type": "component",
+      "component": "shared.boton",
+      "repeatable": false
     }
   },
   "config": {}

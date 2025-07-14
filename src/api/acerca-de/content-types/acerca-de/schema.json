@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "acerca_des",
+  "info": {
+    "singularName": "acerca-de",
+    "pluralName": "acerca-des",
+    "displayName": "Acerca de"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string"
+    },
+    "Historia": {
+      "type": "blocks"
+    },
+    "Evento": {
+      "type": "component",
+      "component": "shared.evento-historiaco",
+      "repeatable": true
+    }
+  }
+}

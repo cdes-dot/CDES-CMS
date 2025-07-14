@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_encabezados",
+  "info": {
+    "displayName": "Encabezado"
+  },
+  "options": {},
+  "attributes": {
+    "articulos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::articulo.articulo"
+    },
+    "Titulo": {
+      "type": "string"
+    },
+    "Subtitulo": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_seccion_de_videos",
+  "info": {
+    "displayName": "Seccion de Videos"
+  },
+  "options": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string"
+    },
+    "Videos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

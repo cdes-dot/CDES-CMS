@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "miembros",
+  "info": {
+    "singularName": "miembro",
+    "pluralName": "miembros",
+    "displayName": "Miembro"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nombres": {
+      "type": "string"
+    },
+    "Apellidos": {
+      "type": "string"
+    },
+    "Posicion": {
+      "type": "string"
+    },
+    "Portada": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "institucion": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::institucion.institucion"
+    }
+  }
+}

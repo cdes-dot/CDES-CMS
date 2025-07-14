@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "navegacions",
+  "info": {
+    "singularName": "navegacion",
+    "pluralName": "navegacions",
+    "displayName": "Navegacion"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Paginas": {
+      "type": "component",
+      "component": "shared.enlace",
+      "repeatable": true
+    },
+    "Logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

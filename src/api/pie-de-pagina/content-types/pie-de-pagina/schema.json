@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "pie_de_paginas",
+  "info": {
+    "singularName": "pie-de-pagina",
+    "pluralName": "pie-de-paginas",
+    "displayName": "Pie de Pagina"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Paginas": {
+      "type": "component",
+      "component": "shared.enlace",
+      "repeatable": true
+    },
+    "Sociales": {
+      "type": "component",
+      "component": "shared.redes-sociales",
+      "repeatable": true
+    }
+  }
+}
