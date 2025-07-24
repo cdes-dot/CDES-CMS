@@ -5,16 +5,16 @@
   },
   "options": {},
   "attributes": {
-    "articulos": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::articulo.articulo"
-    },
     "Titulo": {
       "type": "string"
     },
     "Subtitulo": {
       "type": "text"
+    },
+    "articulos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::articulo.articulo"
     }
   },
   "config": {}

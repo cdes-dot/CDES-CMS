@@ -11,15 +11,16 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Titulo": {
-      "type": "component",
-      "component": "shared.encabezado",
-      "repeatable": false
-    },
     "Contactos": {
       "type": "component",
       "component": "shared.contacto",
       "repeatable": true
+    },
+    "Titulo": {
+      "type": "string"
+    },
+    "Subtitulo": {
+      "type": "text"
     }
   }
 }

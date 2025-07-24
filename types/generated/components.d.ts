@@ -67,6 +67,7 @@ export interface SharedEventoHistoriaco extends Struct.ComponentSchema {
   attributes: {
     Descripcion: Schema.Attribute.Text;
     Fecha: Schema.Attribute.Date;
+    Media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     Titulo: Schema.Attribute.String;
   };
 }

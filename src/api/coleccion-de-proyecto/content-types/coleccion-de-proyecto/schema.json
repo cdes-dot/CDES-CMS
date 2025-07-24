@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "coleccion_de_proyectos",
+  "info": {
+    "singularName": "coleccion-de-proyecto",
+    "pluralName": "coleccion-de-proyectos",
+    "displayName": "Coleccion de Proyecto"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string"
+    },
+    "Subtitulo": {
+      "type": "text"
+    },
+    "Portada": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "proyectos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::proyecto.proyecto"
+    }
+  }
+}

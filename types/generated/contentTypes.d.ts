@@ -389,6 +389,9 @@ export interface ApiAcercaDeAcercaDe extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     Evento: Schema.Attribute.Component<'shared.evento-historiaco', true>;
     Historia: Schema.Attribute.Blocks;
+    Infografia: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -527,6 +530,38 @@ export interface ApiAutorAutor extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiColeccionDeProyectoColeccionDeProyecto
+  extends Struct.SingleTypeSchema {
+  collectionName: 'coleccion_de_proyectos';
+  info: {
+    displayName: 'Coleccion de Proyecto';
+    pluralName: 'coleccion-de-proyectos';
+    singularName: 'coleccion-de-proyecto';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::coleccion-de-proyecto.coleccion-de-proyecto'
+    > &
+      Schema.Attribute.Private;
+    Portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    proyectos: Schema.Attribute.Relation<'oneToMany', 'api::proyecto.proyecto'>;
+    publishedAt: Schema.Attribute.DateTime;
+    Subtitulo: Schema.Attribute.Text;
+    Titulo: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiContactoContacto extends Struct.SingleTypeSchema {
   collectionName: 'contactos';
   info: {
@@ -549,7 +584,8 @@ export interface ApiContactoContacto extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    Titulo: Schema.Attribute.Component<'shared.encabezado', false>;
+    Subtitulo: Schema.Attribute.Text;
+    Titulo: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -837,7 +873,7 @@ export interface ApiPlanesEstrategicoPlanesEstrategico
   };
 }
 
-export interface ApiProyectoProyecto extends Struct.SingleTypeSchema {
+export interface ApiProyectoProyecto extends Struct.CollectionTypeSchema {
   collectionName: 'proyectos';
   info: {
     displayName: 'Proyecto';
@@ -848,17 +884,26 @@ export interface ApiProyectoProyecto extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    Alcance: Schema.Attribute.Text;
+    Completado: Schema.Attribute.Boolean;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Encabezado: Schema.Attribute.Component<'shared.encabezado', false>;
+    Descripcion: Schema.Attribute.Blocks;
+    instituciones: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::institucion.institucion'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::proyecto.proyecto'
     > &
       Schema.Attribute.Private;
+    Objetivos: Schema.Attribute.Blocks;
+    Portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
+    Titulo: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1379,6 +1424,7 @@ declare module '@strapi/strapi' {
       'api::aliado.aliado': ApiAliadoAliado;
       'api::articulo.articulo': ApiArticuloArticulo;
       'api::autor.autor': ApiAutorAutor;
+      'api::coleccion-de-proyecto.coleccion-de-proyecto': ApiColeccionDeProyectoColeccionDeProyecto;
       'api::contacto.contacto': ApiContactoContacto;
       'api::global.global': ApiGlobalGlobal;
       'api::institucion.institucion': ApiInstitucionInstitucion;

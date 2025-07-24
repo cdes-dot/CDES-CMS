@@ -1,5 +1,5 @@
 {
-  "kind": "singleType",
+  "kind": "collectionType",
   "collectionName": "proyectos",
   "info": {
     "singularName": "proyecto",
@@ -11,10 +11,35 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Encabezado": {
-      "type": "component",
-      "component": "shared.encabezado",
-      "repeatable": false
+    "Titulo": {
+      "type": "string"
+    },
+    "Objetivos": {
+      "type": "blocks"
+    },
+    "Alcance": {
+      "type": "text"
+    },
+    "instituciones": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::institucion.institucion"
+    },
+    "Completado": {
+      "type": "boolean"
+    },
+    "Portada": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Descripcion": {
+      "type": "blocks"
     }
   }
 }

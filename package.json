@@ -23,6 +23,8 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
     "strapi-geodata": "^0.1.2",
+    "strapi-plugin-meilisearch": "^0.13.2",
+    "strapi-provider-firebase-storage": "^1.0.4",
     "styled-components": "^6.0.0"
   },
   "devDependencies": {

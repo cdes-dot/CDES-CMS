@@ -25,6 +25,9 @@ export default [
             "'self'",
             "blob:",
             "data:",
+            "storage.googleapis.com",
+            "dl.airtable.com",
+            "data:",
             "https://*.basemaps.cartocdn.com",
             "https://tile.openstreetmap.org",
             "https://*.tile.openstreetmap.org",
@@ -33,6 +36,8 @@ export default [
             "'self'",
             "blob:",
             "data:",
+            "storage.googleapis.com",
+            "dl.airtable.com",
             "https://*.basemaps.cartocdn.com",
             "market-assets.strapi.io",
             "https://*.tile.openstreetmap.org",
@@ -41,6 +46,6 @@ export default [
         },
       },
     },
-  },  
+  },
 ];
 
