@@ -4,19 +4,6 @@
     "displayName": "Evento"
   },
   "options": {},
-  "attributes": {
-    "Titulo": {
-      "type": "string"
-    },
-    "Descripcion": {
-      "type": "text"
-    },
-    "Fecha": {
-      "type": "date"
-    },
-    "Url": {
-      "type": "string"
-    }
-  },
+  "attributes": {},
   "config": {}
 }

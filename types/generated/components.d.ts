@@ -51,12 +51,7 @@ export interface SharedEvento extends Struct.ComponentSchema {
   info: {
     displayName: 'Evento';
   };
-  attributes: {
-    Descripcion: Schema.Attribute.Text;
-    Fecha: Schema.Attribute.Date;
-    Titulo: Schema.Attribute.String;
-    Url: Schema.Attribute.String;
-  };
+  attributes: {};
 }
 
 export interface SharedEventoHistoriaco extends Struct.ComponentSchema {
@@ -79,6 +74,18 @@ export interface SharedFondo extends Struct.ComponentSchema {
   };
   attributes: {
     Imagen: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface SharedLogo extends Struct.ComponentSchema {
+  collectionName: 'components_shared_logos';
+  info: {
+    displayName: 'Logo';
+    icon: 'earth';
+  };
+  attributes: {
+    enlace: Schema.Attribute.String & Schema.Attribute.Required;
+    Nombre: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -151,6 +158,7 @@ declare module '@strapi/strapi' {
       'shared.evento': SharedEvento;
       'shared.evento-historiaco': SharedEventoHistoriaco;
       'shared.fondo': SharedFondo;
+      'shared.logo': SharedLogo;
       'shared.plan-estrategico': SharedPlanEstrategico;
       'shared.redes-sociales': SharedRedesSociales;
       'shared.seccion-de-videos': SharedSeccionDeVideos;

@@ -1,5 +1,5 @@
 {
-  "kind": "singleType",
+  "kind": "collectionType",
   "collectionName": "actividads",
   "info": {
     "singularName": "actividad",
@@ -12,15 +12,36 @@
   "pluginOptions": {},
   "attributes": {
     "Titulo": {
-      "type": "string"
+      "type": "string",
+      "minLength": 4,
+      "maxLength": 200,
+      "required": true
     },
-    "Subtitulo": {
-      "type": "string"
+    "Start": {
+      "type": "datetime",
+      "required": true,
+      "default": "2025-07-30T04:00:00.000Z"
     },
-    "Calendario": {
-      "type": "component",
-      "component": "shared.evento",
-      "repeatable": true
+    "End_time": {
+      "type": "datetime",
+      "required": true,
+      "default": "2025-07-30T04:00:00.000Z"
+    },
+    "Descripcion": {
+      "type": "text"
+    },
+    "Ubicacion": {
+      "type": "string",
+      "required": true
+    },
+    "Tipo": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "cultural",
+        "institucional",
+        "lanzamiento"
+      ]
     }
   }
 }

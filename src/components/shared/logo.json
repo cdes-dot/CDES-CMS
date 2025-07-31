@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_logos",
+  "info": {
+    "displayName": "Logo",
+    "icon": "earth"
+  },
+  "options": {},
+  "attributes": {
+    "Nombre": {
+      "type": "string",
+      "required": true
+    },
+    "enlace": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}
