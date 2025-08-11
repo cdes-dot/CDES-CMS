@@ -16,9 +16,9 @@ export default ({ env }) => ({
   meilisearch: {
     config: {
       // Your meili host
-      host: "http://localhost:7700",
+      host: process.env.MILISEARCH_URL,
       // Your master key or private key
-      apiKey: "EPCi1cZvJRR5wL4imWxuePyA4Sieyao_A_Kyf6jVa0E",
+      apiKey: process.env.MILISEARCH_TOKEN,
     },
   },
 });
