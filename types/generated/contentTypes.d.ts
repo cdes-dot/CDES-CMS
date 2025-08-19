@@ -775,9 +775,8 @@ export interface ApiMiembroMiembro extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     Nombres: Schema.Attribute.String & Schema.Attribute.Required;
-    Portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Schema.Attribute.Required;
-    Posicion: Schema.Attribute.String & Schema.Attribute.Required;
+    Portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Posicion: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

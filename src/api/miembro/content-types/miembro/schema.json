@@ -21,12 +21,12 @@
     },
     "Posicion": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "Portada": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
