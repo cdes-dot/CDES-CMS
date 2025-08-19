@@ -421,7 +421,10 @@ export interface ApiActividadActividad extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Descripcion: Schema.Attribute.Text;
-    End_time: Schema.Attribute.DateTime &
+    Fin: Schema.Attribute.DateTime &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'2025-07-30T04:00:00.000Z'>;
+    Inicio: Schema.Attribute.DateTime &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'2025-07-30T04:00:00.000Z'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -431,9 +434,6 @@ export interface ApiActividadActividad extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    Start: Schema.Attribute.DateTime &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'2025-07-30T04:00:00.000Z'>;
     Tipo: Schema.Attribute.Enumeration<
       ['cultural', 'institucional', 'lanzamiento']
     > &
@@ -479,7 +479,7 @@ export interface ApiAliadoAliado extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Url: Schema.Attribute.String;
+    Url: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -495,7 +495,7 @@ export interface ApiArticuloArticulo extends Struct.CollectionTypeSchema {
   };
   attributes: {
     autor: Schema.Attribute.Relation<'oneToOne', 'api::autor.autor'>;
-    Content: Schema.Attribute.Blocks;
+    Content: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Creacion: Schema.Attribute.Date;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -507,7 +507,8 @@ export interface ApiArticuloArticulo extends Struct.CollectionTypeSchema {
       'api::articulo.articulo'
     > &
       Schema.Attribute.Private;
-    Portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     Titulo: Schema.Attribute.Text &
       Schema.Attribute.Required &
@@ -529,15 +530,15 @@ export interface ApiAutorAutor extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Apellidos: Schema.Attribute.String;
+    Apellidos: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Email: Schema.Attribute.Email;
+    Email: Schema.Attribute.Email & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::autor.autor'> &
       Schema.Attribute.Private;
-    Nombre: Schema.Attribute.String;
+    Nombre: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -607,6 +608,39 @@ export interface ApiContactoContacto extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiEjeEstrategicoEjeEstrategico
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'eje_estrategicos';
+  info: {
+    displayName: 'Eje Estrategico';
+    pluralName: 'eje-estrategicos';
+    singularName: 'eje-estrategico';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Descripcion: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    Equipo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::eje-estrategico.eje-estrategico'
+    > &
+      Schema.Attribute.Private;
+    Logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    miembros: Schema.Attribute.Relation<'manyToMany', 'api::miembro.miembro'>;
+    publishedAt: Schema.Attribute.DateTime;
+    Titulo: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -657,8 +691,11 @@ export interface ApiInstitucionInstitucion extends Struct.CollectionTypeSchema {
       'api::institucion.institucion'
     > &
       Schema.Attribute.Private;
-    Media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    Nombre: Schema.Attribute.String;
+    Media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    Nombre: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Anonimo'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -719,10 +756,14 @@ export interface ApiMiembroMiembro extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Apellidos: Schema.Attribute.String;
+    Apellidos: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    eje_estrategicos: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::eje-estrategico.eje-estrategico'
+    >;
     institucion: Schema.Attribute.Relation<
       'oneToOne',
       'api::institucion.institucion'
@@ -733,9 +774,10 @@ export interface ApiMiembroMiembro extends Struct.CollectionTypeSchema {
       'api::miembro.miembro'
     > &
       Schema.Attribute.Private;
-    Nombres: Schema.Attribute.String;
-    Portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    Posicion: Schema.Attribute.String;
+    Nombres: Schema.Attribute.String & Schema.Attribute.Required;
+    Portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    Posicion: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -829,8 +871,8 @@ export interface ApiOficinaOficina extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    Sede: Schema.Attribute.String;
-    Telefono: Schema.Attribute.String;
+    Sede: Schema.Attribute.String & Schema.Attribute.Required;
+    Telefono: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -850,6 +892,7 @@ export interface ApiPaginaPrincipalPaginaPrincipal
   };
   attributes: {
     Carrousel: Schema.Attribute.DynamicZone<['shared.titulo']>;
+    Contenidos: Schema.Attribute.DynamicZone<['shared.video', 'shared.enlace']>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -865,7 +908,6 @@ export interface ApiPaginaPrincipalPaginaPrincipal
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Videos: Schema.Attribute.Component<'shared.seccion-de-videos', false>;
   };
 }
 
@@ -902,7 +944,7 @@ export interface ApiPlanesEstrategicoPlanesEstrategico
   extends Struct.CollectionTypeSchema {
   collectionName: 'planes_estrategicos';
   info: {
-    displayName: 'Planes-estrategico';
+    displayName: 'Plan Estrategico';
     pluralName: 'planes-estrategicos';
     singularName: 'planes-estrategico';
   };
@@ -910,7 +952,7 @@ export interface ApiPlanesEstrategicoPlanesEstrategico
     draftAndPublish: true;
   };
   attributes: {
-    Contenido: Schema.Attribute.Blocks;
+    Contenido: Schema.Attribute.Blocks & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -921,74 +963,10 @@ export interface ApiPlanesEstrategicoPlanesEstrategico
       'api::planes-estrategico.planes-estrategico'
     > &
       Schema.Attribute.Private;
-    Media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    publishedAt: Schema.Attribute.DateTime;
-    Titulo: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiProjectProject extends Struct.CollectionTypeSchema {
-  collectionName: 'projects';
-  info: {
-    displayName: 'Project';
-    pluralName: 'projects';
-    singularName: 'project';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Alcance: Schema.Attribute.Text;
-    Categoria: Schema.Attribute.Enumeration<
-      [
-        'Desarrollo Urbano',
-        'Medio Ambiente',
-        'Educaci\u00F3n',
-        'Transporte',
-        'Infraestructura',
-        'Social',
-        'Econ\u00F3mico',
-        'Cultural',
-      ]
-    > &
+    Media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Schema.Attribute.Required;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    descripcion: Schema.Attribute.RichText;
-    Enlace: Schema.Attribute.String;
-    Estado: Schema.Attribute.Enumeration<
-      ['Activo', 'En planificaci\u00F3n', 'Completado', 'Pausado', 'Cancelado']
-    > &
-      Schema.Attribute.Required;
-    FechaEstimacionFinal: Schema.Attribute.Date & Schema.Attribute.Required;
-    FechaStart: Schema.Attribute.Date & Schema.Attribute.Required;
-    Imagen: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Schema.Attribute.Required;
-    Instituciones: Schema.Attribute.JSON;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::project.project'
-    > &
-      Schema.Attribute.Private;
-    Logo: Schema.Attribute.Component<'shared.logo', true>;
-    Objetivos: Schema.Attribute.Text & Schema.Attribute.Required;
-    porcentajeAvance: Schema.Attribute.Integer &
-      Schema.Attribute.SetMinMax<
-        {
-          max: 100;
-        },
-        number
-      > &
-      Schema.Attribute.DefaultTo<0>;
-    presupuesto: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     Titulo: Schema.Attribute.String & Schema.Attribute.Required;
-    ubicacion: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1006,12 +984,12 @@ export interface ApiProyectoProyecto extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Alcance: Schema.Attribute.Text;
+    Alcance: Schema.Attribute.Text & Schema.Attribute.Required;
     Completado: Schema.Attribute.Boolean;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Descripcion: Schema.Attribute.Blocks;
+    Descripcion: Schema.Attribute.Blocks & Schema.Attribute.Required;
     instituciones: Schema.Attribute.Relation<
       'oneToMany',
       'api::institucion.institucion'
@@ -1023,9 +1001,10 @@ export interface ApiProyectoProyecto extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     Objetivos: Schema.Attribute.Blocks;
-    Portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    Titulo: Schema.Attribute.String;
+    Titulo: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1548,6 +1527,7 @@ declare module '@strapi/strapi' {
       'api::autor.autor': ApiAutorAutor;
       'api::coleccion-de-proyecto.coleccion-de-proyecto': ApiColeccionDeProyectoColeccionDeProyecto;
       'api::contacto.contacto': ApiContactoContacto;
+      'api::eje-estrategico.eje-estrategico': ApiEjeEstrategicoEjeEstrategico;
       'api::global.global': ApiGlobalGlobal;
       'api::institucion.institucion': ApiInstitucionInstitucion;
       'api::libro.libro': ApiLibroLibro;
@@ -1558,7 +1538,6 @@ declare module '@strapi/strapi' {
       'api::pagina-principal.pagina-principal': ApiPaginaPrincipalPaginaPrincipal;
       'api::pie-de-pagina.pie-de-pagina': ApiPieDePaginaPieDePagina;
       'api::planes-estrategico.planes-estrategico': ApiPlanesEstrategicoPlanesEstrategico;
-      'api::project.project': ApiProjectProject;
       'api::proyecto.proyecto': ApiProyectoProyecto;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

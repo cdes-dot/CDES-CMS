@@ -12,25 +12,13 @@
   "pluginOptions": {},
   "attributes": {
     "Titulo": {
-      "type": "string"
-    },
-    "Objetivos": {
-      "type": "blocks"
-    },
-    "Alcance": {
-      "type": "text"
-    },
-    "instituciones": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::institucion.institucion"
-    },
-    "Completado": {
-      "type": "boolean"
+      "type": "string",
+      "required": true
     },
     "Portada": {
       "type": "media",
       "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
@@ -39,7 +27,23 @@
       ]
     },
     "Descripcion": {
+      "type": "blocks",
+      "required": true
+    },
+    "Alcance": {
+      "type": "text",
+      "required": true
+    },
+    "Objetivos": {
       "type": "blocks"
+    },
+    "instituciones": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::institucion.institucion"
+    },
+    "Completado": {
+      "type": "boolean"
     }
   }
 }

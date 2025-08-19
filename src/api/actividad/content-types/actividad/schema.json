@@ -17,12 +17,12 @@
       "maxLength": 200,
       "required": true
     },
-    "Start": {
+    "Inicio": {
       "type": "datetime",
       "required": true,
       "default": "2025-07-30T04:00:00.000Z"
     },
-    "End_time": {
+    "Fin": {
       "type": "datetime",
       "required": true,
       "default": "2025-07-30T04:00:00.000Z"

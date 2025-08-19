@@ -12,13 +12,16 @@
   "pluginOptions": {},
   "attributes": {
     "Nombre": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "Apellidos": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "Email": {
-      "type": "email"
+      "type": "email",
+      "required": true
     }
   }
 }

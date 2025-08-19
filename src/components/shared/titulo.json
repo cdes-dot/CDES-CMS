@@ -6,19 +6,20 @@
   "options": {},
   "attributes": {
     "Contenido": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "Subtitulo": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "Fondo": {
       "type": "media",
+      "private": true,
       "multiple": false,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ]
     },
     "Enlace": {

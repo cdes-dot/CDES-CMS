@@ -23,6 +23,14 @@ export interface SharedContacto extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedDynamic extends Struct.ComponentSchema {
+  collectionName: 'components_shared_dynamics';
+  info: {
+    displayName: 'dynamic';
+  };
+  attributes: {};
+}
+
 export interface SharedEncabezado extends Struct.ComponentSchema {
   collectionName: 'components_shared_encabezados';
   info: {
@@ -125,16 +133,26 @@ export interface SharedSeccionDeVideos extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedT extends Struct.ComponentSchema {
+  collectionName: 'components_shared_ts';
+  info: {
+    displayName: 't';
+  };
+  attributes: {};
+}
+
 export interface SharedTitulo extends Struct.ComponentSchema {
   collectionName: 'components_shared_titulos';
   info: {
     displayName: 'Diapositiva';
   };
   attributes: {
-    Contenido: Schema.Attribute.String;
+    Contenido: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     Enlace: Schema.Attribute.Component<'shared.boton', false>;
-    Fondo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    Subtitulo: Schema.Attribute.Text;
+    Fondo: Schema.Attribute.Media<'images'> & Schema.Attribute.Private;
+    Subtitulo: Schema.Attribute.Text & Schema.Attribute.Required;
   };
 }
 
@@ -153,6 +171,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'shared.boton': SharedBoton;
       'shared.contacto': SharedContacto;
+      'shared.dynamic': SharedDynamic;
       'shared.encabezado': SharedEncabezado;
       'shared.enlace': SharedEnlace;
       'shared.evento': SharedEvento;
@@ -162,6 +181,7 @@ declare module '@strapi/strapi' {
       'shared.plan-estrategico': SharedPlanEstrategico;
       'shared.redes-sociales': SharedRedesSociales;
       'shared.seccion-de-videos': SharedSeccionDeVideos;
+      'shared.t': SharedT;
       'shared.titulo': SharedTitulo;
       'shared.video': SharedVideo;
     }

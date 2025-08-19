@@ -4,7 +4,7 @@
   "info": {
     "singularName": "planes-estrategico",
     "pluralName": "planes-estrategicos",
-    "displayName": "Planes-estrategico"
+    "displayName": "Plan Estrategico"
   },
   "options": {
     "draftAndPublish": true
@@ -12,14 +12,13 @@
   "pluginOptions": {},
   "attributes": {
     "Titulo": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
-    "Contenido": {
-      "type": "blocks"
-    },
-    "Locacion": {
+    "Media": {
       "type": "media",
       "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
@@ -27,7 +26,11 @@
         "audios"
       ]
     },
-    "Media": {
+    "Contenido": {
+      "type": "blocks",
+      "required": true
+    },
+    "Locacion": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [

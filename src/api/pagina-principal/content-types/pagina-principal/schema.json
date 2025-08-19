@@ -27,10 +27,12 @@
       "component": "shared.plan-estrategico",
       "repeatable": false
     },
-    "Videos": {
-      "type": "component",
-      "component": "shared.seccion-de-videos",
-      "repeatable": false
+    "Contenidos": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.video",
+        "shared.enlace"
+      ]
     }
   }
 }

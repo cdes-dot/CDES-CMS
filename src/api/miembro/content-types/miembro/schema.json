@@ -12,17 +12,21 @@
   "pluginOptions": {},
   "attributes": {
     "Nombres": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "Apellidos": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "Posicion": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "Portada": {
       "type": "media",
       "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
@@ -34,6 +38,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::institucion.institucion"
+    },
+    "eje_estrategicos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::eje-estrategico.eje-estrategico",
+      "mappedBy": "miembros"
     }
   }
 }

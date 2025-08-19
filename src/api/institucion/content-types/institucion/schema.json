@@ -12,11 +12,14 @@
   "pluginOptions": {},
   "attributes": {
     "Nombre": {
-      "type": "string"
+      "type": "string",
+      "default": "Anonimo",
+      "required": true
     },
     "Media": {
       "type": "media",
       "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",

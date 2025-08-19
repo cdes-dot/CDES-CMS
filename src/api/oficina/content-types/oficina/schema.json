@@ -12,7 +12,8 @@
   "pluginOptions": {},
   "attributes": {
     "Sede": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "Encargado": {
       "type": "relation",
@@ -20,7 +21,8 @@
       "target": "api::miembro.miembro"
     },
     "Telefono": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "Localizacion": {
       "type": "customField",

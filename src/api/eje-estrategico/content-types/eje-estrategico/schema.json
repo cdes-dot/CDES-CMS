@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eje_estrategicos",
+  "info": {
+    "singularName": "eje-estrategico",
+    "pluralName": "eje-estrategicos",
+    "displayName": "Eje Estrategico"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string",
+      "required": true
+    },
+    "Descripcion": {
+      "type": "blocks",
+      "required": true
+    },
+    "Equipo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "miembros": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::miembro.miembro",
+      "inversedBy": "eje_estrategicos"
+    }
+  }
+}
