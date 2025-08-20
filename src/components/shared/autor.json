@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_autors",
+  "info": {
+    "displayName": "Autor"
+  },
+  "options": {},
+  "attributes": {
+    "Nombre": {
+      "type": "string",
+      "default": "Consejo para el desarrollo estrategico de Santiago ",
+      "required": true
+    }
+  },
+  "config": {}
+}
