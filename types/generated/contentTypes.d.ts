@@ -776,8 +776,8 @@ export interface ApiMiembroMiembro extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     Nombres: Schema.Attribute.String & Schema.Attribute.Required;
     Portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    Posicion: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    Puestos: Schema.Attribute.Relation<'manyToMany', 'api::puesto.puesto'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1002,6 +1002,36 @@ export interface ApiProyectoProyecto extends Struct.CollectionTypeSchema {
     Objetivos: Schema.Attribute.Blocks;
     Portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    Titulo: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPuestoPuesto extends Struct.CollectionTypeSchema {
+  collectionName: 'puestos';
+  info: {
+    displayName: 'Puesto';
+    pluralName: 'puestos';
+    singularName: 'puesto';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Descripcion: Schema.Attribute.Blocks;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::puesto.puesto'
+    > &
+      Schema.Attribute.Private;
+    miembros: Schema.Attribute.Relation<'manyToMany', 'api::miembro.miembro'>;
     publishedAt: Schema.Attribute.DateTime;
     Titulo: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -1538,6 +1568,7 @@ declare module '@strapi/strapi' {
       'api::pie-de-pagina.pie-de-pagina': ApiPieDePaginaPieDePagina;
       'api::planes-estrategico.planes-estrategico': ApiPlanesEstrategicoPlanesEstrategico;
       'api::proyecto.proyecto': ApiProyectoProyecto;
+      'api::puesto.puesto': ApiPuestoPuesto;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

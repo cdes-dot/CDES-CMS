@@ -19,10 +19,6 @@
       "type": "string",
       "required": true
     },
-    "Posicion": {
-      "type": "string",
-      "required": false
-    },
     "Portada": {
       "type": "media",
       "multiple": false,
@@ -44,6 +40,12 @@
       "relation": "manyToMany",
       "target": "api::eje-estrategico.eje-estrategico",
       "mappedBy": "miembros"
+    },
+    "Puestos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::puesto.puesto",
+      "inversedBy": "miembros"
     }
   }
 }
