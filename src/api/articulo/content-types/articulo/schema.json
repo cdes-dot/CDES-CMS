@@ -37,6 +37,11 @@
     "Identificador": {
       "type": "uid",
       "targetField": "Titulo"
+    },
+    "Autor": {
+      "type": "component",
+      "component": "shared.autor",
+      "repeatable": false
     }
   }
 }

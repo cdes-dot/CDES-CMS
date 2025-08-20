@@ -495,6 +495,7 @@ export interface ApiArticuloArticulo extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    Autor: Schema.Attribute.Component<'shared.autor', false>;
     Content: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Creacion: Schema.Attribute.Date;
     createdAt: Schema.Attribute.DateTime;

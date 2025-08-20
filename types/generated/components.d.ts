@@ -1,5 +1,17 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface SharedAutor extends Struct.ComponentSchema {
+  collectionName: 'components_shared_autors';
+  info: {
+    displayName: 'Autor';
+  };
+  attributes: {
+    Nombre: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Consejo para el desarrollo estrategico de Santiago '>;
+  };
+}
+
 export interface SharedBoton extends Struct.ComponentSchema {
   collectionName: 'components_shared_botons';
   info: {
@@ -161,6 +173,7 @@ export interface SharedVideo extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'shared.autor': SharedAutor;
       'shared.boton': SharedBoton;
       'shared.contacto': SharedContacto;
       'shared.dynamic': SharedDynamic;
