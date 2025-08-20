@@ -46,6 +46,16 @@
       "relation": "manyToMany",
       "target": "api::puesto.puesto",
       "inversedBy": "miembros"
+    },
+    "Activo": {
+      "type": "boolean",
+      "required": false,
+      "default": true
+    },
+    "Contactos": {
+      "type": "component",
+      "component": "shared.contacto",
+      "repeatable": true
     }
   }
 }

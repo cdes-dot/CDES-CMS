@@ -34,11 +34,6 @@
     "Creacion": {
       "type": "date"
     },
-    "autor": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::autor.autor"
-    },
     "Identificador": {
       "type": "uid",
       "targetField": "Titulo"

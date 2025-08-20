@@ -133,14 +133,6 @@ export interface SharedSeccionDeVideos extends Struct.ComponentSchema {
   };
 }
 
-export interface SharedT extends Struct.ComponentSchema {
-  collectionName: 'components_shared_ts';
-  info: {
-    displayName: 't';
-  };
-  attributes: {};
-}
-
 export interface SharedTitulo extends Struct.ComponentSchema {
   collectionName: 'components_shared_titulos';
   info: {
@@ -181,7 +173,6 @@ declare module '@strapi/strapi' {
       'shared.plan-estrategico': SharedPlanEstrategico;
       'shared.redes-sociales': SharedRedesSociales;
       'shared.seccion-de-videos': SharedSeccionDeVideos;
-      'shared.t': SharedT;
       'shared.titulo': SharedTitulo;
       'shared.video': SharedVideo;
     }

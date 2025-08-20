@@ -494,7 +494,6 @@ export interface ApiArticuloArticulo extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    autor: Schema.Attribute.Relation<'oneToOne', 'api::autor.autor'>;
     Content: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Creacion: Schema.Attribute.Date;
     createdAt: Schema.Attribute.DateTime;
@@ -513,33 +512,6 @@ export interface ApiArticuloArticulo extends Struct.CollectionTypeSchema {
     Titulo: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiAutorAutor extends Struct.CollectionTypeSchema {
-  collectionName: 'autors';
-  info: {
-    displayName: 'Autor';
-    pluralName: 'autors';
-    singularName: 'autor';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Apellidos: Schema.Attribute.String & Schema.Attribute.Required;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    Email: Schema.Attribute.Email & Schema.Attribute.Required;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::autor.autor'> &
-      Schema.Attribute.Private;
-    Nombre: Schema.Attribute.String & Schema.Attribute.Required;
-    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -756,7 +728,9 @@ export interface ApiMiembroMiembro extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    Activo: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     Apellidos: Schema.Attribute.String & Schema.Attribute.Required;
+    Contactos: Schema.Attribute.Component<'shared.contacto', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -834,6 +808,36 @@ export interface ApiNoticiaNoticia extends Struct.SingleTypeSchema {
       'api::noticia.noticia'
     > &
       Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiNumerosTelefonicoNumerosTelefonico
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'numeros_telefonicos';
+  info: {
+    displayName: 'Numeros Telefonico';
+    pluralName: 'numeros-telefonicos';
+    singularName: 'numeros-telefonico';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Alias: Schema.Attribute.String & Schema.Attribute.DefaultTo<'Personal'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::numeros-telefonico.numeros-telefonico'
+    > &
+      Schema.Attribute.Private;
+    Numero: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1553,7 +1557,6 @@ declare module '@strapi/strapi' {
       'api::actividad.actividad': ApiActividadActividad;
       'api::aliado.aliado': ApiAliadoAliado;
       'api::articulo.articulo': ApiArticuloArticulo;
-      'api::autor.autor': ApiAutorAutor;
       'api::coleccion-de-proyecto.coleccion-de-proyecto': ApiColeccionDeProyectoColeccionDeProyecto;
       'api::contacto.contacto': ApiContactoContacto;
       'api::eje-estrategico.eje-estrategico': ApiEjeEstrategicoEjeEstrategico;
@@ -1563,6 +1566,7 @@ declare module '@strapi/strapi' {
       'api::miembro.miembro': ApiMiembroMiembro;
       'api::navegacion.navegacion': ApiNavegacionNavegacion;
       'api::noticia.noticia': ApiNoticiaNoticia;
+      'api::numeros-telefonico.numeros-telefonico': ApiNumerosTelefonicoNumerosTelefonico;
       'api::oficina.oficina': ApiOficinaOficina;
       'api::pagina-principal.pagina-principal': ApiPaginaPrincipalPaginaPrincipal;
       'api::pie-de-pagina.pie-de-pagina': ApiPieDePaginaPieDePagina;
