@@ -143,7 +143,7 @@ export interface SharedTitulo extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     Enlace: Schema.Attribute.Component<'shared.boton', false>;
-    Fondo: Schema.Attribute.Media<'images'> & Schema.Attribute.Private;
+    Fondo: Schema.Attribute.Media<'images'>;
     Subtitulo: Schema.Attribute.Text & Schema.Attribute.Required;
   };
 }

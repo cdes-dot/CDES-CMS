@@ -16,7 +16,6 @@
     },
     "Fondo": {
       "type": "media",
-      "private": true,
       "multiple": false,
       "allowedTypes": [
         "images"
