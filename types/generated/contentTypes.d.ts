@@ -398,6 +398,7 @@ export interface ApiAcercaDeAcercaDe extends Struct.SingleTypeSchema {
       'api::acerca-de.acerca-de'
     > &
       Schema.Attribute.Private;
+    Miembros: Schema.Attribute.Relation<'oneToMany', 'api::miembro.miembro'>;
     publishedAt: Schema.Attribute.DateTime;
     Titulo: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;

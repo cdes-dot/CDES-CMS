@@ -31,6 +31,11 @@
       "type": "component",
       "component": "shared.evento-historiaco",
       "repeatable": true
+    },
+    "Miembros": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::miembro.miembro"
     }
   }
 }
