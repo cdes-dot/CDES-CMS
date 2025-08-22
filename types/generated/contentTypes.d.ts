@@ -974,6 +974,7 @@ export interface ApiPlanesEstrategicoPlanesEstrategico
       Schema.Attribute.Private;
     Media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Schema.Attribute.Required;
+    Objetivos: Schema.Attribute.Component<'shared.objetivo', true>;
     publishedAt: Schema.Attribute.DateTime;
     Titulo: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
