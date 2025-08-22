@@ -39,6 +39,11 @@
         "videos",
         "audios"
       ]
+    },
+    "eje_estrategicos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::eje-estrategico.eje-estrategico"
     }
   }
 }
