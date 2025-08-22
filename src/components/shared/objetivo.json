@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_shared_objetivos",
+  "info": {
+    "displayName": "Objetivo"
+  },
+  "options": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string"
+    },
+    "Descripcion": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}
