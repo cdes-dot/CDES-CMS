@@ -20,6 +20,11 @@
         "videos",
         "audios"
       ]
+    },
+    "Boton": {
+      "type": "component",
+      "component": "shared.enlace",
+      "repeatable": false
     }
   },
   "config": {}

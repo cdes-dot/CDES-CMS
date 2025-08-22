@@ -115,6 +115,7 @@ export interface SharedPlanEstrategico extends Struct.ComponentSchema {
     displayName: 'Plan estrategico';
   };
   attributes: {
+    Boton: Schema.Attribute.Component<'shared.enlace', false>;
     Contenido: Schema.Attribute.Blocks;
     Media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     Titulo: Schema.Attribute.String;
