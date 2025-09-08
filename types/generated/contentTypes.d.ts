@@ -384,9 +384,11 @@ export interface ApiAcercaDeAcercaDe extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    Asociados: Schema.Attribute.Component<'shared.miembros', false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Directivos: Schema.Attribute.Component<'shared.miembros', false>;
     Evento: Schema.Attribute.Component<'shared.evento-historiaco', true>;
     Historia: Schema.Attribute.Blocks;
     Infografia: Schema.Attribute.Media<
@@ -398,7 +400,6 @@ export interface ApiAcercaDeAcercaDe extends Struct.SingleTypeSchema {
       'api::acerca-de.acerca-de'
     > &
       Schema.Attribute.Private;
-    Miembros: Schema.Attribute.Relation<'oneToMany', 'api::miembro.miembro'>;
     publishedAt: Schema.Attribute.DateTime;
     Titulo: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;

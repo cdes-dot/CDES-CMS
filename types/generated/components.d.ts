@@ -109,6 +109,17 @@ export interface SharedLogo extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedMiembros extends Struct.ComponentSchema {
+  collectionName: 'components_shared_miembros';
+  info: {
+    displayName: 'Miembros';
+  };
+  attributes: {
+    miembros: Schema.Attribute.Relation<'oneToMany', 'api::miembro.miembro'>;
+    Titulo: Schema.Attribute.String;
+  };
+}
+
 export interface SharedObjetivo extends Struct.ComponentSchema {
   collectionName: 'components_shared_objetivos';
   info: {
@@ -195,6 +206,7 @@ declare module '@strapi/strapi' {
       'shared.evento-historiaco': SharedEventoHistoriaco;
       'shared.fondo': SharedFondo;
       'shared.logo': SharedLogo;
+      'shared.miembros': SharedMiembros;
       'shared.objetivo': SharedObjetivo;
       'shared.plan-estrategico': SharedPlanEstrategico;
       'shared.redes-sociales': SharedRedesSociales;
