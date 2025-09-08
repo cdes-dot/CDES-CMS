@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_miembros",
+  "info": {
+    "displayName": "Miembros"
+  },
+  "options": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string"
+    },
+    "miembros": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::miembro.miembro"
+    }
+  },
+  "config": {}
+}
