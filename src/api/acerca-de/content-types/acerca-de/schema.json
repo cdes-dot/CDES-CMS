@@ -35,12 +35,14 @@
     "Directivos": {
       "type": "component",
       "component": "shared.miembros",
-      "repeatable": false
+      "repeatable": false,
+      "required": true
     },
     "Asociados": {
       "type": "component",
       "component": "shared.miembros",
-      "repeatable": false
+      "repeatable": false,
+      "required": true
     }
   }
 }
