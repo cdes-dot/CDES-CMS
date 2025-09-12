@@ -9,6 +9,7 @@
       "type": "string"
     },
     "miembros": {
+      "required": true,
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::miembro.miembro"
