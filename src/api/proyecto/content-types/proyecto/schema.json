@@ -30,20 +30,14 @@
       "type": "blocks",
       "required": true
     },
-    "Alcance": {
-      "type": "text",
-      "required": true
-    },
     "Objetivos": {
       "type": "blocks"
     },
-    "instituciones": {
+    "eje_estrategico": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::institucion.institucion"
-    },
-    "Completado": {
-      "type": "boolean"
+      "relation": "manyToOne",
+      "target": "api::eje-estrategico.eje-estrategico",
+      "required": true
     }
   }
 }
