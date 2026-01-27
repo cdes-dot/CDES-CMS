@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "miembros",
+  "collectionName": "equipo_tecnico",
   "info": {
-    "singularName": "miembro",
-    "pluralName": "miembros",
-    "displayName": "Miembro"
+    "singularName": "equipo-tecnico",
+    "pluralName": "equipo-tecnicos",
+    "displayName": "Equipo Técnico"
   },
   "options": {
     "draftAndPublish": true
@@ -30,16 +30,15 @@
         "audios"
       ]
     },
-    "institucion": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::institucion.institucion"
-    },
     "Puestos": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::puesto.puesto",
-      "inversedBy": "miembros"
+      "inversedBy": "equipo_tecnico"
+    },
+    "contacto": {
+      "type": "email",
+      "required": true
     }
   }
 }

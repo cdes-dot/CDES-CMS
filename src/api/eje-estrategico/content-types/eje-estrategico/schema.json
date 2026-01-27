@@ -34,12 +34,6 @@
       "allowedTypes": [
         "images"
       ]
-    },
-    "miembros": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::miembro.miembro",
-      "inversedBy": "eje_estrategicos"
     }
   }
 }
