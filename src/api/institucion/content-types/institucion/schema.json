@@ -26,6 +26,10 @@
         "videos",
         "audios"
       ]
+    },
+    "Url": {
+      "type": "string",
+      "required": false
     }
   }
 }
