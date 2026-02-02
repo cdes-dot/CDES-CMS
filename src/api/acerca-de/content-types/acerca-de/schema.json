@@ -32,17 +32,10 @@
       "component": "shared.evento-historiaco",
       "repeatable": true
     },
-    "Directivos": {
-      "type": "component",
-      "component": "shared.miembros",
-      "repeatable": false,
-      "required": true
-    },
-    "Asociados": {
-      "type": "component",
-      "component": "shared.miembros",
-      "repeatable": false,
-      "required": true
+    "EquipoTecnico": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::equipo-tecnico.equipo-tecnico"
     }
   }
 }
