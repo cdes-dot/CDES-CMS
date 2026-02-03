@@ -30,9 +30,9 @@
         "audios"
       ]
     },
-    "Puestos": {
+    "Puesto": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToOne",
       "target": "api::puesto.puesto",
       "inversedBy": "equipo_tecnico"
     },
