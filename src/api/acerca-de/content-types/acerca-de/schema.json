@@ -32,6 +32,11 @@
       "component": "shared.evento-historiaco",
       "repeatable": true
     },
+    "Miembros": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::miembro.miembro"
+    },
     "EquipoTecnico": {
       "type": "relation",
       "relation": "oneToMany",
