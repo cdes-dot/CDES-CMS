@@ -115,7 +115,8 @@ export interface SharedMiembros extends Struct.ComponentSchema {
     displayName: 'Miembros';
   };
   attributes: {
-    miembros: Schema.Attribute.Relation<'oneToMany', 'api::miembro.miembro'>;
+    miembros: Schema.Attribute.Relation<'oneToMany', 'api::miembro.miembro'> &
+      Schema.Attribute.Required;
     Titulo: Schema.Attribute.String;
   };
 }

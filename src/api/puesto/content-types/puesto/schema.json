@@ -15,20 +15,17 @@
       "type": "string",
       "required": true
     },
-    "Descripcion": {
-      "type": "blocks"
-    },
     "miembros": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::miembro.miembro",
       "mappedBy": "Puestos"
     },
-    "equipo_tecnico": {
+    "equipo_tecnicos": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::equipo-tecnico.equipo-tecnico",
-      "mappedBy": "Puesto"
+      "mappedBy": "puesto"
     }
   }
 }

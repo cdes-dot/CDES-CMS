@@ -384,11 +384,9 @@ export interface ApiAcercaDeAcercaDe extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Asociados: Schema.Attribute.Component<'shared.miembros', false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Directivos: Schema.Attribute.Component<'shared.miembros', false>;
     Evento: Schema.Attribute.Component<'shared.evento-historiaco', true>;
     Historia: Schema.Attribute.Blocks;
     Infografia: Schema.Attribute.Media<
@@ -400,6 +398,7 @@ export interface ApiAcercaDeAcercaDe extends Struct.SingleTypeSchema {
       'api::acerca-de.acerca-de'
     > &
       Schema.Attribute.Private;
+    Miembros: Schema.Attribute.Relation<'oneToMany', 'api::miembro.miembro'>;
     publishedAt: Schema.Attribute.DateTime;
     Titulo: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -607,9 +606,53 @@ export interface ApiEjeEstrategicoEjeEstrategico
     > &
       Schema.Attribute.Private;
     Logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    miembros: Schema.Attribute.Relation<'manyToMany', 'api::miembro.miembro'>;
     publishedAt: Schema.Attribute.DateTime;
     Titulo: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiEquipoTecnicoEquipoTecnico
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'equipo_tecnicos';
+  info: {
+    displayName: 'Equipo Tecnico';
+    pluralName: 'equipo-tecnicos';
+    singularName: 'equipo-tecnico';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Apellidos: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+        minLength: 2;
+      }>;
+    Contacto: Schema.Attribute.Email &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::equipo-tecnico.equipo-tecnico'
+    > &
+      Schema.Attribute.Private;
+    Nombre: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 50;
+        minLength: 2;
+      }>;
+    Portada: Schema.Attribute.Media<'images' | 'files'>;
+    publishedAt: Schema.Attribute.DateTime;
+    puesto: Schema.Attribute.Relation<'manyToOne', 'api::puesto.puesto'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -675,6 +718,7 @@ export interface ApiInstitucionInstitucion extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Url: Schema.Attribute.String;
   };
 }
 
@@ -731,16 +775,10 @@ export interface ApiMiembroMiembro extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Activo: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     Apellidos: Schema.Attribute.String & Schema.Attribute.Required;
-    Contactos: Schema.Attribute.Component<'shared.contacto', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    eje_estrategicos: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::eje-estrategico.eje-estrategico'
-    >;
     institucion: Schema.Attribute.Relation<
       'oneToOne',
       'api::institucion.institucion'
@@ -962,10 +1000,6 @@ export interface ApiPlanesEstrategicoPlanesEstrategico
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    eje_estrategicos: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::eje-estrategico.eje-estrategico'
-    >;
     Locacion: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -996,16 +1030,15 @@ export interface ApiProyectoProyecto extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Alcance: Schema.Attribute.Text & Schema.Attribute.Required;
-    Completado: Schema.Attribute.Boolean;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Descripcion: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    instituciones: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::institucion.institucion'
-    >;
+    eje_estrategico: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::eje-estrategico.eje-estrategico'
+    > &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1037,7 +1070,10 @@ export interface ApiPuestoPuesto extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Descripcion: Schema.Attribute.Blocks;
+    equipo_tecnicos: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::equipo-tecnico.equipo-tecnico'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1569,6 +1605,7 @@ declare module '@strapi/strapi' {
       'api::coleccion-de-proyecto.coleccion-de-proyecto': ApiColeccionDeProyectoColeccionDeProyecto;
       'api::contacto.contacto': ApiContactoContacto;
       'api::eje-estrategico.eje-estrategico': ApiEjeEstrategicoEjeEstrategico;
+      'api::equipo-tecnico.equipo-tecnico': ApiEquipoTecnicoEquipoTecnico;
       'api::global.global': ApiGlobalGlobal;
       'api::institucion.institucion': ApiInstitucionInstitucion;
       'api::libro.libro': ApiLibroLibro;
