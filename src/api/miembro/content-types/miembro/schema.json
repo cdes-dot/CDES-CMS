@@ -25,9 +25,7 @@
       "required": false,
       "allowedTypes": [
         "images",
-        "files",
-        "videos",
-        "audios"
+        "files"
       ]
     },
     "institucion": {
@@ -35,9 +33,9 @@
       "relation": "oneToOne",
       "target": "api::institucion.institucion"
     },
-    "Puestos": {
+    "puesto": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::puesto.puesto",
       "inversedBy": "miembros"
     }

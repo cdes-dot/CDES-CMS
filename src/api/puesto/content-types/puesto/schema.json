@@ -17,9 +17,9 @@
     },
     "miembros": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::miembro.miembro",
-      "mappedBy": "Puestos"
+      "mappedBy": "puesto"
     },
     "equipo_tecnicos": {
       "type": "relation",

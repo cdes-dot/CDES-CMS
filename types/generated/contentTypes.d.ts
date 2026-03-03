@@ -790,9 +790,9 @@ export interface ApiMiembroMiembro extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     Nombres: Schema.Attribute.String & Schema.Attribute.Required;
-    Portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Portada: Schema.Attribute.Media<'images' | 'files'>;
     publishedAt: Schema.Attribute.DateTime;
-    Puestos: Schema.Attribute.Relation<'manyToMany', 'api::puesto.puesto'>;
+    puesto: Schema.Attribute.Relation<'manyToOne', 'api::puesto.puesto'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1080,7 +1080,7 @@ export interface ApiPuestoPuesto extends Struct.CollectionTypeSchema {
       'api::puesto.puesto'
     > &
       Schema.Attribute.Private;
-    miembros: Schema.Attribute.Relation<'manyToMany', 'api::miembro.miembro'>;
+    miembros: Schema.Attribute.Relation<'oneToMany', 'api::miembro.miembro'>;
     publishedAt: Schema.Attribute.DateTime;
     Titulo: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
