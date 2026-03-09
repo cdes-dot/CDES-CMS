@@ -387,6 +387,10 @@ export interface ApiAcercaDeAcercaDe extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    equipo_tecnicos: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::equipo-tecnico.equipo-tecnico'
+    >;
     Evento: Schema.Attribute.Component<'shared.evento-historiaco', true>;
     Historia: Schema.Attribute.Blocks;
     Infografia: Schema.Attribute.Media<

@@ -36,6 +36,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::miembro.miembro"
+    },
+    "equipo_tecnicos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::equipo-tecnico.equipo-tecnico"
     }
   }
 }
