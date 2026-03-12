@@ -656,7 +656,7 @@ export interface ApiEquipoTecnicoEquipoTecnico
       }>;
     Portada: Schema.Attribute.Media<'images' | 'files'>;
     publishedAt: Schema.Attribute.DateTime;
-    puesto: Schema.Attribute.Relation<'manyToOne', 'api::puesto.puesto'>;
+    Puesto: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -796,7 +796,9 @@ export interface ApiMiembroMiembro extends Struct.CollectionTypeSchema {
     Nombres: Schema.Attribute.String & Schema.Attribute.Required;
     Portada: Schema.Attribute.Media<'images' | 'files'>;
     publishedAt: Schema.Attribute.DateTime;
-    puesto: Schema.Attribute.Relation<'manyToOne', 'api::puesto.puesto'>;
+    Puesto: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Vocal'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1052,39 +1054,6 @@ export interface ApiProyectoProyecto extends Struct.CollectionTypeSchema {
     Objetivos: Schema.Attribute.Blocks;
     Portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Schema.Attribute.Required;
-    publishedAt: Schema.Attribute.DateTime;
-    Titulo: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiPuestoPuesto extends Struct.CollectionTypeSchema {
-  collectionName: 'puestos';
-  info: {
-    displayName: 'Puesto';
-    pluralName: 'puestos';
-    singularName: 'puesto';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    equipo_tecnicos: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::equipo-tecnico.equipo-tecnico'
-    >;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::puesto.puesto'
-    > &
-      Schema.Attribute.Private;
-    miembros: Schema.Attribute.Relation<'oneToMany', 'api::miembro.miembro'>;
     publishedAt: Schema.Attribute.DateTime;
     Titulo: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -1622,7 +1591,6 @@ declare module '@strapi/strapi' {
       'api::pie-de-pagina.pie-de-pagina': ApiPieDePaginaPieDePagina;
       'api::planes-estrategico.planes-estrategico': ApiPlanesEstrategicoPlanesEstrategico;
       'api::proyecto.proyecto': ApiProyectoProyecto;
-      'api::puesto.puesto': ApiPuestoPuesto;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

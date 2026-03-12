@@ -31,16 +31,14 @@
         "files"
       ]
     },
-    "puesto": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::puesto.puesto",
-      "inversedBy": "equipo_tecnicos"
-    },
     "Contacto": {
       "type": "email",
       "required": true,
       "unique": true
+    },
+    "Puesto": {
+      "type": "string",
+      "required": true
     }
   }
 }

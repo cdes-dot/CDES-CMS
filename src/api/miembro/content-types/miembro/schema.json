@@ -33,11 +33,10 @@
       "relation": "oneToOne",
       "target": "api::institucion.institucion"
     },
-    "puesto": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::puesto.puesto",
-      "inversedBy": "miembros"
+    "Puesto": {
+      "type": "string",
+      "default": "Vocal",
+      "required": true
     }
   }
 }
