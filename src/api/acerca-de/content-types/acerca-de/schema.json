@@ -27,6 +27,22 @@
     "Historia": {
       "type": "blocks"
     },
+    "Vision": {
+      "type": "blocks",
+      "required": true
+    },
+    "Mision": {
+      "type": "blocks",
+      "required": true
+    },
+    "Valores": {
+      "type": "blocks",
+      "required": true
+    },
+    "Objetivos": {
+      "type": "blocks",
+      "required": true
+    },
     "Evento": {
       "type": "component",
       "component": "shared.evento-historiaco",
