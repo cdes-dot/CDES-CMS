@@ -11,14 +11,22 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "institucion": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::institucion.institucion"
+    "Nombre": {
+      "type": "string",
+      "required": true
+    },
+    "Logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     },
     "Url": {
       "type": "string",
-      "required": true
+      "required": false
     }
   }
 }
