@@ -27,17 +27,13 @@
     "Historia": {
       "type": "blocks"
     },
-    "Vision": {
-      "type": "blocks",
-      "required": true
-    },
-    "Mision": {
-      "type": "blocks",
-      "required": true
-    },
-    "Valores": {
-      "type": "blocks",
-      "required": true
+    "Mision_Vision_Objeitvo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     },
     "Objetivos": {
       "type": "blocks",
