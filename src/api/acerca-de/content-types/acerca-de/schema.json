@@ -35,10 +35,6 @@
         "files"
       ]
     },
-    "Objetivos": {
-      "type": "blocks",
-      "required": true
-    },
     "Evento": {
       "type": "component",
       "component": "shared.evento-historiaco",

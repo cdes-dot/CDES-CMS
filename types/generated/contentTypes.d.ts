@@ -404,7 +404,6 @@ export interface ApiAcercaDeAcercaDe extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     Miembros: Schema.Attribute.Relation<'oneToMany', 'api::miembro.miembro'>;
     Mision_Vision_Objeitvo: Schema.Attribute.Media<'images' | 'files'>;
-    Objetivos: Schema.Attribute.Blocks & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     Titulo: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
