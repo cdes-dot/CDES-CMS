@@ -403,12 +403,15 @@ export interface ApiAcercaDeAcercaDe extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     Miembros: Schema.Attribute.Relation<'oneToMany', 'api::miembro.miembro'>;
-    Mision_Vision_Objeitvo: Schema.Attribute.Media<'images' | 'files'>;
+    Mision: Schema.Attribute.Media<'images' | 'files'>;
+    Objetivos: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
     Titulo: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Valores: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Vision: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 

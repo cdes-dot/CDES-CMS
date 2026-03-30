@@ -27,12 +27,42 @@
     "Historia": {
       "type": "blocks"
     },
-    "Mision_Vision_Objeitvo": {
+    "Mision": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
         "images",
         "files"
+      ]
+    },
+    "Vision": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Valores": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Objetivos": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
       ]
     },
     "Evento": {
